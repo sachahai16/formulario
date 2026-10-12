@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de registro</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/node_modules/flatpickr/dist/flatpickr.min.css">
+</head>
+
+<body>
+    <form class="container mt-4" action="https://www.w3schools.com/action_page.php" method="post"
+        enctype="multipart/form-data">
+        <fieldset>
+            <legend>Datos personales</legend>
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" class="form-control" required>
+            </div>
+            <div>
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" class="form-control" required>
+            </div>
+            <div>
+                <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+                <input type="text" id="fecha_nacimiento" name="fecha_nacimiento" class="form-control" required>
+            </div>
+
+
+        </fieldset>
+        <fieldset>
+            <legend>Contacto</legend>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div>
+                <label for="web">Página web personal:</label>
+                <input type="url" id="web" name="web" class="form-control">
+            </div>
+            <div>
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" pattern="[0-9 +\-]{6,20}"
+                    title="Solo números, espacios, + y guiones (entre 6 y 20 caracteres)" class="form-control">
+            </div>
+            <div>
+                <label for="residencia">Lugar de residencia:</label>
+                <input type="text" id="residencia" name="residencia" class="form-control">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Preferencias</legend>
+            <fieldset>
+                <legend>Publicidad por e-mail:</legend>
+
+                <div>
+                    <input type="radio" id="pub_semanal" name="publicidad" value="semanal">
+                    <label for="pub_semanal">Un e-mail semanal</label>
+                </div>
+                <div>
+                    <input type="radio" id="pub_mensual" name="publicidad" value="mensual">
+                    <label for="pub_mensual">Un e-mail mensual</label>
+                </div>
+                <div>
+                    <input type="radio" id="pub_ninguno" name="publicidad" value="ninguno">
+                    <label for="pub_ninguno">No recibir publicidad</label>
+                </div>
+
+            </fieldset>
+            <div>
+                <input type="color" id="color" name="color">
+                <label for="color">Color favorito</label>
+            </div>
+            <div>
+                <input type="range" id="experiencia" name="experiencia" min="0" max="100" value="0">
+                <label for="experiencia">Experiencia en Software Libre</label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Cuenta</legend>
+            <div>
+                <label for="imagen">Imagen de perfil:</label>
+                <input type="file" id="imagen" name="imagen" accept="image/jpeg, image/png">
+            </div>
+            <div>
+                <label for="contraseña">Contraseña:</label>
+                <input type="password" id="contraseña" name="contraseña" required minlength="10" maxlength="60"
+                    class="form-control" required>
+            </div>
+        </fieldset>
+        <div>
+            <input type="checkbox" id="términos" name="terminos" value="aceptado" required>
+            <label for="términos">Acepto los términos y condiciones</label>
+        </div>
+        <div>
+            <button class="btn btn-primary" type="submit" value="enviar">Enviar TEST</button>
+            <button class="btn btn-secondary" type="reset" value="borrar">Borrar</button>
+        </div>
+    </form>
+    <script src="/node_modules/flatpickr/dist/flatpickr.min.js"></script>
+    <script>
+        flatpickr("#fecha_nacimiento", {
+            dateFormat: "Y-m-d",
+            maxDate: "today"
+        });
+    </script>
+    <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            Swal.fire({
+                title: "¡Formulario validado!",
+                text: "Los campos obligatorios están completos.",
+                icon: "success"
+            });
+        });
+    </script>
+
+</body>
+
+</html>
